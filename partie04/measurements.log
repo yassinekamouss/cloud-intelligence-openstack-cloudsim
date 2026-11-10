@@ -1,0 +1,14 @@
+# Journal de Surveillance SLA OpenStack — Yassine Kamouss (R140087494)
+# Format : TIMESTAMP_UTC | CYCLE | INSTANCE | NOVA_STATUS | IP_CIBLE | PING_ICMP | SSH_TCP22 | ETAT_SLA | DISPONIBILITE_CUMULEE
+2026-11-10T16:50:34Z | Cycle=01/06 | Instance=instance-cirros-sla1 | Nova=ACTIVE   | IP=172.24.4.159 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (1/1) | SLA=OK
+2026-11-10T16:50:34Z | Cycle=01/06 | Instance=instance-cirros-sla2 | Nova=ACTIVE   | IP=172.24.4.212 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (1/1) | SLA=OK
+2026-11-10T16:51:35Z | Cycle=02/06 | Instance=instance-cirros-sla1 | Nova=ACTIVE   | IP=172.24.4.159 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (2/2) | SLA=OK
+2026-11-10T16:51:35Z | Cycle=02/06 | Instance=instance-cirros-sla2 | Nova=ACTIVE   | IP=172.24.4.212 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (2/2) | SLA=OK
+2026-11-10T16:52:35Z | Cycle=03/06 | Instance=instance-cirros-sla1 | Nova=ACTIVE   | IP=172.24.4.159 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (3/3) | SLA=OK
+2026-11-10T16:52:35Z | Cycle=03/06 | Instance=instance-cirros-sla2 | Nova=ACTIVE   | IP=172.24.4.212 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (3/3) | SLA=OK
+2026-11-10T16:53:36Z | Cycle=04/06 | Instance=instance-cirros-sla1 | Nova=ACTIVE   | IP=172.24.4.159 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (4/4) | SLA=OK
+2026-11-10T16:53:36Z | Cycle=04/06 | Instance=instance-cirros-sla2 | Nova=ACTIVE   | IP=172.24.4.212 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (4/4) | SLA=OK
+2026-11-10T16:54:37Z | Cycle=05/06 | Instance=instance-cirros-sla1 | Nova=ACTIVE   | IP=172.24.4.159 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (5/5) | SLA=OK
+2026-11-10T16:54:37Z | Cycle=05/06 | Instance=instance-cirros-sla2 | Nova=SHUTOFF  | IP=172.24.4.212 | Ping=KO | SSH=KO | Etat=INDISPONIBLE | Dispo= 80.00% (4/5) | SLA=BREACH
+2026-11-10T16:55:37Z | Cycle=06/06 | Instance=instance-cirros-sla1 | Nova=ACTIVE   | IP=172.24.4.159 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo=100.00% (6/6) | SLA=OK
+2026-11-10T16:55:37Z | Cycle=06/06 | Instance=instance-cirros-sla2 | Nova=ACTIVE   | IP=172.24.4.212 | Ping=OK | SSH=OK | Etat=DISPONIBLE   | Dispo= 83.33% (5/6) | SLA=BREACH

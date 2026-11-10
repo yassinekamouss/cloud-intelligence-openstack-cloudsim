@@ -1,0 +1,127 @@
+{
+  "sla_version": "1.0.0",
+  "document_title": "Service Level Agreement (SLA) — Infrastructure Cloud IaaS OpenStack",
+  "parties": {
+    "provider": {
+      "name": "Département Cloud Intelligence — Université Abdelmalek Essaâdi",
+      "platform": "OpenStack (DevStack IaaS Private Cloud)",
+      "administrator": "Yassine Kamouss (ID: R140087494)"
+    },
+    "customer": {
+      "name": "Services Numériques Universitaires (Production IaaS)",
+      "tenant_project": "admin"
+    }
+  },
+  "scope": {
+    "monitored_instances": [
+      {
+        "name": "instance-cirros-sla1",
+        "role": "Instance Témoin (Haute Disponibilité nominale)",
+        "flavor": "m1.nano",
+        "image": "cirros-0.6.3-x86_64-disk"
+      },
+      {
+        "name": "instance-cirros-sla2",
+        "role": "Instance Cible (Test de résilience et injection de panne)",
+        "flavor": "m1.nano",
+        "image": "cirros-0.6.3-x86_64-disk"
+      }
+    ],
+    "excluded_instances": [
+      "instance-cirros",
+      "instance-saas"
+    ]
+  },
+  "service_level_objectives": {
+    "target_availability_percent": 99.5,
+    "evaluation_period": "Quotidienne (24 heures glissantes / 1440 minutes)",
+    "measurement_frequency_seconds": 300,
+    "measurement_frequency_human": "Toutes les 5 minutes (288 mesures par 24 heures)",
+    "max_tolerated_failed_checks_per_day": 1,
+    "max_tolerated_downtime_per_day": "5 minutes (échantillonnage discret aux 5 min) / 7 minutes 12 secondes (théorique continu)"
+  },
+  "availability_definition": {
+    "logical_rule": "CONTROL_PLANE_ACTIVE AND DATA_PLANE_REACHABLE",
+    "criteria": [
+      {
+        "layer": "1. Plan de Contrôle (Control Plane — API OpenStack Nova)",
+        "condition": "L'attribut status de l'instance retourné par l'API Nova (openstacksdk) doit être strictement égal à 'ACTIVE' et son état d'alimentation (power_state) à 1 (Running)."
+      },
+      {
+        "layer": "2. Plan de Données (Data Plane — Connectivité Réseau)",
+        "condition": "L'instance doit être joignable sur son adresse IP via une sonde réseau active : réponse au Ping ICMP (1 paquet, timeout 2s) ou ouverture réussie d'une connexion TCP sur le port SSH 22 (timeout 2s)."
+      }
+    ],
+    "unavailability_states": "Tout autre état Nova (SHUTOFF, ERROR, BUILD, REBOOT, SUSPENDED) ou échec de la sonde réseau classe la mesure comme 'INDISPONIBLE' (DOWN)."
+  },
+  "calculation_formula": {
+    "expression": "Disponibilite (%) = (Mesures_Disponibles / Mesures_Totales) * 100",
+    "variables": {
+      "Mesures_Disponibles": "Nombre de sondes où l'instance respecte simultanément le critère Nova (ACTIVE) et le critère réseau (PING/SSH OK).",
+      "Mesures_Totales": "Nombre total de sondes exécutées durant la fenêtre d'évaluation."
+    },
+    "precision": "Arrondi à 2 décimales."
+  },
+  "remediation_and_penalties": {
+    "automated_alerting": "Journalisation immédiate d'une alerte CRITIQUE dans measurements.log dès la détection d'une sonde en échec (état DOWN).",
+    "penalty_tiers": [
+      {
+        "availability_range": ">= 99.50%",
+        "status": "CONFORME (SLA RESPECTÉ)",
+        "service_credit_penalty": "0% (Aucune pénalité)"
+      },
+      {
+        "availability_range": "99.00% - 99.49%",
+        "status": "VIOLATION MINEURE (SLA NON RESPECTÉ)",
+        "service_credit_penalty": "10% d'avoir (Service Credit) sur la facturation quotidienne de l'instance"
+      },
+      {
+        "availability_range": "95.00% - 98.99%",
+        "status": "VIOLATION MAJEURE (SLA NON RESPECTÉ)",
+        "service_credit_penalty": "25% d'avoir (Service Credit) + ouverture automatique d'un rapport d'incident Post-Mortem"
+      },
+      {
+        "availability_range": "< 95.00%",
+        "status": "VIOLATION CRITIQUE (SLA NON RESPECTÉ)",
+        "service_credit_penalty": "50% d'avoir (Service Credit) + migration prioritaire sur un nouvel hôte de calcul"
+      }
+    ]
+  },
+  "surveillance_report": {
+    "evaluation_period": {
+      "start_utc": "2026-11-10T16:50:34Z",
+      "end_utc": "2026-11-10T16:55:38Z",
+      "sampling_interval_seconds": 60,
+      "total_cycles_executed": 6,
+      "extrapolation_note": "Calcul basé sur la formule contractuelle : (Mesures_Disponibles / Mesures_Totales) * 100. Sur une journée complète (24h à 1 mesure / 5 min = 288 mesures), un objectif de 99,5% exige au moins 287 mesures disponibles (tolérance maximale d'une seule mesure en échec, soit 5 minutes de panne)."
+    },
+    "global_sla_compliance": false,
+    "global_verdict": "VIOLATION DE SLA DÉTECTÉE SUR AU MOINS UNE INSTANCE",
+    "instances_results": {
+      "instance-cirros-sla1": {
+        "total_measurements": 6,
+        "available_measurements": 6,
+        "unavailable_measurements": 0,
+        "availability_percent": 100.0,
+        "sla_target_percent": 99.5,
+        "objective_met": true,
+        "verdict": "RESPECTÉ (CONFORME)",
+        "applicable_penalty": "0% (Aucune pénalité)",
+        "last_known_nova_status": "ACTIVE",
+        "last_known_ip": "172.24.4.159"
+      },
+      "instance-cirros-sla2": {
+        "total_measurements": 6,
+        "available_measurements": 5,
+        "unavailable_measurements": 1,
+        "availability_percent": 83.33,
+        "sla_target_percent": 99.5,
+        "objective_met": false,
+        "verdict": "NON RESPECTÉ (VIOLATION CRITIQUE)",
+        "applicable_penalty": "50% d'avoir + Migration prioritaire",
+        "last_known_nova_status": "ACTIVE",
+        "last_known_ip": "172.24.4.212"
+      }
+    }
+  }
+}
