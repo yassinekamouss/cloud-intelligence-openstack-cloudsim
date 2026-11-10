@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Cloud Intelligence - Partie 3 (Terraform & Ansible)</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --success: #22c55e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, var(--bg-dark));
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 720px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--success);
+            border-radius: 50%;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        p.subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .info-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 10px;
+            padding: 1.1rem 1.4rem;
+        }
+        .info-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+        .info-value {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+        }
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+        .meta-table td {
+            padding: 0.65rem 0;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .meta-table td:first-child {
+            color: var(--text-muted);
+            width: 45%;
+        }
+        .meta-table td:last-child {
+            color: var(--text-main);
+            font-family: monospace;
+            text-align: right;
+        }
+        .footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">
+            <span class="dot"></span>
+            Déployé automatiquement via Terraform & Ansible (IaC)
+        </div>
+        <h1>Projet Cloud Intelligence — Partie 3</h1>
+        <p class="subtitle">Université Abdelmalek Essaâdi · Infrastructure OpenStack (DevStack)</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">Nom et Prénom de l'Étudiant</div>
+                <div class="info-value">{{ student_name }}</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Numéro d'Étudiant (CNE / Massar)</div>
+                <div class="info-value">{{ student_id }}</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Nom de l'Instance OpenStack (Hostname)</div>
+                <div class="info-value">{{ ansible_hostname }}</div>
+            </div>
+        </div>
+
+        <table class="meta-table">
+            <tr>
+                <td>Adresse IP Flottante (Public)</td>
+                <td>{{ ansible_host }}</td>
+            </tr>
+            <tr>
+                <td>Adresse IP Privée (private-net)</td>
+                <td>{{ ansible_default_ipv4.address }}</td>
+            </tr>
+            <tr>
+                <td>Système d'Exploitation</td>
+                <td>{{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_kernel }})</td>
+            </tr>
+            <tr>
+                <td>Serveur Web</td>
+                <td>Nginx (Actif & Activé au démarrage)</td>
+            </tr>
+            <tr>
+                <td>Date de Déploiement (UTC)</td>
+                <td>{{ ansible_date_time.iso8601 }}</td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            Provisionné par <strong>Terraform</strong> (terraform-provider-openstack) · Configuré par <strong>Ansible</strong> (Jinja2 Template)
+        </div>
+    </div>
+</body>
+</html>

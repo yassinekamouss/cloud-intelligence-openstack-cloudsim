@@ -1,0 +1,61 @@
+---
+- name: "Configuration IaC du Serveur Web Nginx sur OpenStack"
+  hosts: webservers
+  become: true
+  gather_facts: true
+
+  vars:
+    student_name: "Yassine Kamouss"
+    student_id: "R140087494"
+
+  pre_tasks:
+    - name: "1. Garantir la résolution locale du nom d'hôte dans /etc/hosts (Optimisation sudo)"
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        regexp: '^127\.0\.1\.1\s+'
+        line: "127.0.1.1 {{ ansible_hostname }}"
+        state: present
+
+    - name: "2. Garantir un résolveur DNS externe fiable (8.8.8.8) pour APT"
+      ansible.builtin.copy:
+        dest: /etc/resolv.conf
+        content: |
+          nameserver 8.8.8.8
+          nameserver 1.1.1.1
+        mode: "0644"
+        follow: false
+
+    - name: "2b. Ajuster le MTU de l'interface réseau (1400) et forcer APT en IPv4"
+      ansible.builtin.shell: |
+        ip link set dev {{ ansible_default_ipv4.interface }} mtu 1400
+        echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf.d/99force-ipv4
+      changed_when: false
+
+  tasks:
+    - name: "3. Installer le serveur web Nginx via APT (avec mise à jour du cache)"
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: "4. S'assurer que le service Nginx est démarré et activé au démarrage"
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: "5. Déployer la page web dynamique (Jinja2) avec les informations de l'étudiant et de l'instance"
+      ansible.builtin.template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: "0644"
+      notify: Reload Nginx
+
+  handlers:
+    - name: Reload Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
