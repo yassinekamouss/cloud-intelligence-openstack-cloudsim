@@ -1,0 +1,198 @@
+terraform apply -auto-approve
+data.openstack_networking_network_v2.private_net: Reading...
+data.openstack_networking_network_v2.private_net: Read complete after 1s [id=cc04037f-5ff5-49c9-9a54-13cba71a3cb9]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # local_file.ansible_inventory will be created
+  + resource "local_file" "ansible_inventory" {
+      + content              = (known after apply)
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0644"
+      + filename             = "./../ansible/inventory.ini"
+      + id                   = (known after apply)
+    }
+
+  # openstack_compute_instance_v2.ubuntu_iac will be created
+  + resource "openstack_compute_instance_v2" "ubuntu_iac" {
+      + access_ip_v4        = (known after apply)
+      + access_ip_v6        = (known after apply)
+      + all_metadata        = (known after apply)
+      + all_tags            = (known after apply)
+      + availability_zone   = (known after apply)
+      + created             = (known after apply)
+      + flavor_id           = (known after apply)
+      + flavor_name         = "m1.small"
+      + force_delete        = false
+      + id                  = (known after apply)
+      + image_id            = (known after apply)
+      + image_name          = "ubuntu-20.04"
+      + key_pair            = "key-cirros"
+      + name                = "instance-terraform"
+      + power_state         = "active"
+      + region              = (known after apply)
+      + security_groups     = (known after apply)
+      + stop_before_destroy = false
+      + updated             = (known after apply)
+      + user_data           = "3ad179faca7b4e007ce8c0cb2d48b0c9bcf3d458"
+
+      + network {
+          + access_network = false
+          + fixed_ip_v4    = (known after apply)
+          + fixed_ip_v6    = (known after apply)
+          + floating_ip    = (known after apply)
+          + mac            = (known after apply)
+          + name           = (known after apply)
+          + port           = (known after apply)
+          + uuid           = (known after apply)
+        }
+    }
+
+  # openstack_networking_floatingip_associate_v2.fip_assoc will be created
+  + resource "openstack_networking_floatingip_associate_v2" "fip_assoc" {
+      + fixed_ip    = (known after apply)
+      + floating_ip = (known after apply)
+      + id          = (known after apply)
+      + port_id     = (known after apply)
+      + region      = (known after apply)
+    }
+
+  # openstack_networking_floatingip_v2.fip_iac will be created
+  + resource "openstack_networking_floatingip_v2" "fip_iac" {
+      + address    = (known after apply)
+      + all_tags   = (known after apply)
+      + dns_domain = (known after apply)
+      + dns_name   = (known after apply)
+      + fixed_ip   = (known after apply)
+      + id         = (known after apply)
+      + pool       = "public"
+      + port_id    = (known after apply)
+      + region     = (known after apply)
+      + subnet_id  = (known after apply)
+      + tenant_id  = (known after apply)
+    }
+
+  # openstack_networking_port_v2.port_iac will be created
+  + resource "openstack_networking_port_v2" "port_iac" {
+      + admin_state_up         = true
+      + all_fixed_ips          = (known after apply)
+      + all_security_group_ids = (known after apply)
+      + all_tags               = (known after apply)
+      + device_id              = (known after apply)
+      + device_owner           = (known after apply)
+      + dns_assignment         = (known after apply)
+      + dns_name               = (known after apply)
+      + id                     = (known after apply)
+      + mac_address            = (known after apply)
+      + name                   = "port-instance-terraform"
+      + network_id             = "cc04037f-5ff5-49c9-9a54-13cba71a3cb9"
+      + port_security_enabled  = (known after apply)
+      + qos_policy_id          = (known after apply)
+      + region                 = (known after apply)
+      + security_group_ids     = (known after apply)
+      + tenant_id              = (known after apply)
+
+      + binding (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.rule_http will be created
+  + resource "openstack_networking_secgroup_rule_v2" "rule_http" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 80
+      + port_range_min    = 80
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + security_group_id = (known after apply)
+      + tenant_id         = (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.rule_icmp will be created
+  + resource "openstack_networking_secgroup_rule_v2" "rule_icmp" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = (known after apply)
+      + port_range_min    = (known after apply)
+      + protocol          = "icmp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + security_group_id = (known after apply)
+      + tenant_id         = (known after apply)
+    }
+
+  # openstack_networking_secgroup_rule_v2.rule_ssh will be created
+  + resource "openstack_networking_secgroup_rule_v2" "rule_ssh" {
+      + direction         = "ingress"
+      + ethertype         = "IPv4"
+      + id                = (known after apply)
+      + port_range_max    = 22
+      + port_range_min    = 22
+      + protocol          = "tcp"
+      + region            = (known after apply)
+      + remote_group_id   = (known after apply)
+      + remote_ip_prefix  = "0.0.0.0/0"
+      + security_group_id = (known after apply)
+      + tenant_id         = (known after apply)
+    }
+
+  # openstack_networking_secgroup_v2.secgroup_iac will be created
+  + resource "openstack_networking_secgroup_v2" "secgroup_iac" {
+      + all_tags    = (known after apply)
+      + description = "Groupe de securite IaC (Terraform) - Autorise SSH, HTTP et ICMP"
+      + id          = (known after apply)
+      + name        = "secgroup-iac"
+      + region      = (known after apply)
+      + tenant_id   = (known after apply)
+    }
+
+Plan: 9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + ansible_inventory_path = "./../ansible/inventory.ini"
+  + floating_ip            = (known after apply)
+  + instance_id            = (known after apply)
+  + instance_name          = "instance-terraform"
+  + private_ip             = (known after apply)
+openstack_networking_floatingip_v2.fip_iac: Creating...
+openstack_networking_secgroup_v2.secgroup_iac: Creating...
+openstack_networking_secgroup_v2.secgroup_iac: Creation complete after 0s [id=ff0cf314-42d0-4c8a-8e1c-5fd8e1d7d862]
+openstack_networking_secgroup_rule_v2.rule_http: Creating...
+openstack_networking_port_v2.port_iac: Creating...
+openstack_networking_secgroup_rule_v2.rule_icmp: Creating...
+openstack_networking_secgroup_rule_v2.rule_ssh: Creating...
+openstack_networking_secgroup_rule_v2.rule_http: Creation complete after 1s [id=58b84b07-1833-4515-818e-d5d1c27c0bbb]
+openstack_networking_secgroup_rule_v2.rule_icmp: Creation complete after 1s [id=2c267e28-83e2-4cb6-a933-e6724576d1fb]
+openstack_networking_secgroup_rule_v2.rule_ssh: Creation complete after 1s [id=b18aea10-0445-4bb2-8841-09807a46f63a]
+openstack_networking_port_v2.port_iac: Creation complete after 6s [id=223ea69e-70f9-4097-9209-054da97fbd96]
+openstack_compute_instance_v2.ubuntu_iac: Creating...
+openstack_networking_floatingip_v2.fip_iac: Creation complete after 6s [id=f3df827b-b3d7-440f-940d-b39d9ccc0bf4]
+openstack_networking_floatingip_associate_v2.fip_assoc: Creating...
+openstack_networking_floatingip_associate_v2.fip_assoc: Creation complete after 1s [id=f3df827b-b3d7-440f-940d-b39d9ccc0bf4]
+openstack_compute_instance_v2.ubuntu_iac: Still creating... [00m10s elapsed]
+openstack_compute_instance_v2.ubuntu_iac: Creation complete after 11s [id=041f6c3d-de4f-4fad-af38-ba23650f34dd]
+local_file.ansible_inventory: Creating...
+local_file.ansible_inventory: Creation complete after 0s [id=093d762ea8921718347681b452244c845a62f2e0]
+
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ansible_inventory_path = "./../ansible/inventory.ini"
+floating_ip = "172.24.4.155"
+instance_id = "041f6c3d-de4f-4fad-af38-ba23650f34dd"
+instance_name = "instance-terraform"
+private_ip = "10.0.0.76"
