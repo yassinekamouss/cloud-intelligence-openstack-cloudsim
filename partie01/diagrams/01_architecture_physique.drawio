@@ -1,0 +1,81 @@
+<mxfile host="65bd71144e">
+    <diagram id="uae-physical-arch" name="Architecture Physique UAE">
+        <mxGraphModel dx="1654" dy="1165" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1360" pageHeight="860" background="#F8FAFC" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="header_banner" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#1e293b;fontColor=light-dark(#FFFFFF,#EDEDED);align=center;verticalAlign=middle;shadow=1;" value="&lt;font style=&quot;font-size: 21px; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;span style=&quot;letter-spacing: 0.5px;&quot;&gt;UNIVERSITÉ ABDELMALEK ESSAÂDI (UAE) — ARCHITECTURE PHYSIQUE (INFRASTRUCTURE UNDERLAY)&lt;/span&gt;&lt;br&gt;Modélisation CloudSim Plus v8.0.4 • Topologie des Datacenters Physiques (Tétouan &amp;amp; Tanger) et Infrastructure Cloud Public&lt;/font&gt;" vertex="1">
+                    <mxGeometry height="65" width="1280" x="40" y="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc1_box" parent="1" style="shape=swimlane;startSize=45;rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e40af;strokeWidth=2.5;swimlaneFillColor=#f0f9ff;fontColor=#1e40af;collapsible=0;shadow=1;" value="&lt;b style=&quot;font-size:14px;&quot;&gt;🏛️ Datacenter 1 : Tétouan — Privé (Présidence)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; font-weight:normal; color:#475569;&quot;&gt;Infrastructure On-Premise Principale • 10 Hôtes Physiques • SAN 10 To&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="600" width="380" x="40" y="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc1_badge" parent="dc1_box" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=1.5;align=center;verticalAlign=middle;" value="&lt;b style=&quot;font-size:10px; color:#1e40af;&quot;&gt;Site Privé UAE&lt;/b&gt;" vertex="1">
+                    <mxGeometry height="30" width="110" x="290" y="-15" as="geometry"/>
+                </mxCell>
+                <mxCell id="h1_1" parent="dc1_box" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=10;fillColor=#f8fafc;strokeColor=#2563eb;strokeWidth=2;verticalAlign=middle;align=center;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;Host 1 (Serveur Rack Physique)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#1e40af;&quot;&gt;• 64 Cores (PE) @ 3000 MIPS&lt;br/&gt;• 256 GB RAM (DDR4 ECC)&lt;br/&gt;• 10 Gbps NIC Dédié • 1 To SSD Local&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="110" width="330" x="25" y="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="h1_2" parent="dc1_box" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=10;fillColor=#f8fafc;strokeColor=#2563eb;strokeWidth=2;verticalAlign=middle;align=center;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;Host 2 (Serveur Rack Physique)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#1e40af;&quot;&gt;• 64 Cores (PE) @ 3000 MIPS&lt;br/&gt;• 256 GB RAM (DDR4 ECC)&lt;br/&gt;• 10 Gbps NIC Dédié • 1 To SSD Local&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="110" width="330" x="25" y="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="h1_n" parent="dc1_box" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=10;fillColor=#e2e8f0;strokeColor=#64748b;strokeWidth=2;dashed=1;verticalAlign=middle;align=center;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;Hosts 3 à 10 : Pool de Ressources&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#334155;&quot;&gt;8 Serveurs Physiques Identiques en Cluster&lt;br/&gt;• 8 &amp;times; 64 Cores = 512 Cores (PE)&lt;br/&gt;• 8 &amp;times; 256 GB = 2 048 GB RAM (2 To)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="120" width="330" x="25" y="335" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc1_storage" parent="dc1_box" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=1.5;align=center;verticalAlign=middle;" value="&lt;b style=&quot;color:#0f172a;&quot;&gt;🗄️ Baie SAN Privée Tétouan : 10 To Storage&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#475569;&quot;&gt;Fibre Channel 16 Gbps • Stockage partagé des bases de données&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="95" width="330" x="25" y="480" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc2_box" parent="1" style="shape=swimlane;startSize=45;rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0f766e;strokeWidth=2.5;swimlaneFillColor=#f0fdfa;fontColor=#0f766e;collapsible=0;shadow=1;" value="&lt;b style=&quot;font-size:14px;&quot;&gt;🏢 Datacenter 2 : Tanger — Privé (FST / ENSA)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; font-weight:normal; color:#475569;&quot;&gt;Site Privé Secondaire • 10 Hôtes Physiques • SAN 10 To&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="600" width="380" x="460" y="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc2_badge" parent="dc2_box" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#14b8a6;strokeWidth=1.5;align=center;verticalAlign=middle;" value="&lt;b style=&quot;font-size:10px; color:#0f766e;&quot;&gt;Site Privé UAE&lt;/b&gt;" vertex="1">
+                    <mxGeometry height="30" width="110" x="290" y="-15" as="geometry"/>
+                </mxCell>
+                <mxCell id="h2_1" parent="dc2_box" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=10;fillColor=#f8fafc;strokeColor=#0d9488;strokeWidth=2;verticalAlign=middle;align=center;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;Host 1 (Serveur Rack Physique)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#0f766e;&quot;&gt;• 64 Cores (PE) @ 3000 MIPS&lt;br/&gt;• 256 GB RAM (DDR4 ECC)&lt;br/&gt;• 10 Gbps NIC Dédié • 1 To SSD Local&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="110" width="330" x="25" y="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="h2_2" parent="dc2_box" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=10;fillColor=#f8fafc;strokeColor=#0d9488;strokeWidth=2;verticalAlign=middle;align=center;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;Host 2 (Serveur Rack Physique)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#0f766e;&quot;&gt;• 64 Cores (PE) @ 3000 MIPS&lt;br/&gt;• 256 GB RAM (DDR4 ECC)&lt;br/&gt;• 10 Gbps NIC Dédié • 1 To SSD Local&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="110" width="330" x="25" y="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="h2_n" parent="dc2_box" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=10;fillColor=#e2e8f0;strokeColor=#64748b;strokeWidth=2;dashed=1;verticalAlign=middle;align=center;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#0f172a;&quot;&gt;Hosts 3 à 10 : Pool de Ressources&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#334155;&quot;&gt;8 Serveurs Physiques Identiques en Cluster&lt;br/&gt;• 8 &amp;times; 64 Cores = 512 Cores (PE)&lt;br/&gt;• 8 &amp;times; 256 GB = 2 048 GB RAM (2 To)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="120" width="330" x="25" y="335" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc2_storage" parent="dc2_box" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#ccfbf1;strokeColor=#0d9488;strokeWidth=1.5;align=center;verticalAlign=middle;" value="&lt;b style=&quot;color:#0f172a;&quot;&gt;🗄️ Baie SAN Privée Tanger : 10 To Storage&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#475569;&quot;&gt;Fibre Channel 16 Gbps • Réplication &amp;amp; Archives Moodle&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="95" width="330" x="25" y="480" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc3_cloud_bg" parent="1" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#ea580c;strokeWidth=3;dashed=1;shadow=1;" value="" vertex="1">
+                    <mxGeometry height="600" width="440" x="880" y="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc3_title" parent="1" style="shape=rect;rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#ffedd5;strokeColor=#f97316;strokeWidth=2;align=center;verticalAlign=middle;" value="&lt;b style=&quot;font-size:15px; color:#c2410c;&quot;&gt;☁️ Datacenter 3 : Cloud Public&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#9a3412;&quot;&gt;Infrastructure Hyperscaler Élastique (AWS / GCP / Azure)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="60" width="350" x="925" y="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="h3_x" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.08;size=12;fillColor=#fed7aa;strokeColor=#ea580c;strokeWidth=2.5;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:14px; color:#9a3412;&quot;&gt;H3_X : Pool Physique Élastique Illimité&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-size:12px; color:#7c2d12; line-height:1.5;&quot;&gt;• Capacité CPU/RAM extensible à la demande&lt;br/&gt;• Multi-Tenant Hyperscale Compute Nodes&lt;br/&gt;• Auto-Provisioning dynamique sans contrainte matérielle&lt;br/&gt;• Facturation au millième de seconde (Pay-as-you-go)&lt;br/&gt;• Connectivité mondiale multi-gigabits redondée&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="230" width="340" x="930" y="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc3_feature" parent="1" style="shape=rect;rounded=1;arcSize=30;dashed=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;align=center;verticalAlign=middle;" value="&lt;b style=&quot;color:#9a3412;&quot;&gt;⚡ Destination Débordement (Cloud Bursting)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#78350f;&quot;&gt;Absorption instantanée des pics de 60 000 requêtes/sec&lt;br/&gt;Zéro investissement matériel Capex fixe&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="60" width="320" x="940" y="530" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_dc1_dc2" edge="1" parent="1" source="dc1_box" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#059669;fontColor=#065f46;fontStyle=1;startArrow=classic;endArrow=classic;exitX=1;exitY=0.45;exitDx=0;exitDy=0;entryX=0;entryY=0.45;entryDx=0;entryDy=0;" target="dc2_box" value="&lt;b&gt;Liaison Haut Débit Dédiée (Fibre Inter-Villes 10 Gbps)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px;&quot;&gt;Synchronisation &amp;amp; Failover SAN / Réplication Base de Données&lt;/span&gt;">
+                    <mxGeometry relative="1" y="-35" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_dc1_dc3" edge="1" parent="1" source="dc1_box" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=6 4;strokeWidth=2.5;strokeColor=#ea580c;fontColor=#c2410c;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.381;entryY=0.901;entryDx=0;entryDy=0;entryPerimeter=0;" target="dc3_cloud_bg" value="Lien Sécurisé VPN Direct Connect (Bursting Tétouan &amp;rarr; Public)">
+                    <mxGeometry relative="1" x="-0.1276" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="230" y="735"/>
+                            <mxPoint x="990" y="735"/>
+                            <mxPoint x="990" y="655.6"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_dc2_dc3" edge="1" parent="1" source="dc2_box" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=6 4;strokeWidth=2.5;strokeColor=#ea580c;fontColor=#c2410c;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="dc3_cloud_bg" value="Lien Sécurisé VPN Direct Connect (Bursting Tanger &amp;rarr; Public)">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_box" parent="1" style="shape=rect;rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#94a3b8;strokeWidth=1.5;fontColor=#334155;align=left;spacing=10;shadow=1;" value="&lt;table style=&quot;width:100%; border-collapse:collapse; font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;width:33%; vertical-align:middle;&quot;&gt;&lt;b style=&quot;color:#0f172a;&quot;&gt;🏛️ Datacenter 1 (Tétouan - Privé)&lt;/b&gt;&lt;br/&gt;• 10 Hosts physiques (640 Cores, 2,5 To RAM)&lt;br/&gt;• Réseau SAN Fibre Channel 10 To Dédié&lt;/td&gt;&lt;td style=&quot;width:33%; vertical-align:middle; border-left:1px solid #cbd5e1; padding-left:15px;&quot;&gt;&lt;b style=&quot;color:#0f172a;&quot;&gt;🏢 Datacenter 2 (Tanger - Privé)&lt;/b&gt;&lt;br/&gt;• 10 Hosts physiques (640 Cores, 2,5 To RAM)&lt;br/&gt;• Site miroir &amp;amp; continuité d&#39;activité (Failover)&lt;/td&gt;&lt;td style=&quot;width:34%; vertical-align:middle; border-left:1px solid #cbd5e1; padding-left:15px;&quot;&gt;&lt;b style=&quot;color:#0f172a;&quot;&gt;☁️ Datacenter 3 (Cloud Public Débordement)&lt;/b&gt;&lt;br/&gt;• Compute nodes élastiques sans limite statique&lt;br/&gt;• Bursting déclenché à &amp;gt; 80% d&#39;utilisation CPU&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+                    <mxGeometry height="75" width="1280" x="40" y="760" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

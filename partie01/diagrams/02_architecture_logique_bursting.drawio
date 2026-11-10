@@ -1,0 +1,109 @@
+<mxfile host="65bd71144e">
+    <diagram id="uae-logical-bursting" name="Architecture Logique UAE">
+        <mxGraphModel dx="1426" dy="1005" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="960" background="#F8FAFC" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="header_banner" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#1e293b;fontColor=#FFFFFF;align=center;verticalAlign=middle;shadow=1;" value="&lt;font style=&quot;font-size: 20px; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;b style=&quot;letter-spacing: 0.5px;&quot;&gt;UNIVERSITÉ ABDELMALEK ESSAÂDI (UAE) — ARCHITECTURE LOGIQUE &amp;amp; CLOUD BURSTING&lt;/b&gt;&lt;br&gt;Orchestration CloudSim Plus v8.0.4 • Broker Intelligent • Machines Virtuelles &amp;amp; Mécanisme HorizontalVmScaling&lt;/font&gt;" vertex="1">
+                    <mxGeometry height="65" width="1320" x="40" y="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="users_node" parent="1" style="shape=rect;rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=2;fontColor=#0f172a;shadow=1;" value="&lt;b style=&quot;font-size:13px;&quot;&gt;👥 Trafic Étudiant / Cloudlets&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#0369a1;&quot;&gt;Charge Normale (10k) &amp;amp; Pic Examens/Inscriptions (60k)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="65" width="340" x="100" y="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="broker_node" parent="1" style="shape=rect;rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0284c7;strokeWidth=2.5;fontColor=#ffffff;shadow=1;" value="&lt;b style=&quot;font-size:14px; color:#ffffff;&quot;&gt;Datacenter Broker / Load Balancer&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#38bdf8;&quot;&gt;Point d&#39;entrée centralisé • Répartition de charge &amp;amp; Routage adaptatif&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="65" width="400" x="540" y="115" as="geometry"/>
+                </mxCell>
+                <mxCell id="broker_icon" parent="1" style="shape=mxgraph.cisco.switches.load_balancer;html=1;pointerEvents=1;dashed=0;fillColor=#0284c7;strokeColor=#ffffff;strokeWidth=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="" vertex="1">
+                    <mxGeometry height="40" width="36" x="555" y="128" as="geometry"/>
+                </mxCell>
+                <mxCell id="vms_privees_box" parent="1" style="shape=swimlane;startSize=45;rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e40af;strokeWidth=2;swimlaneFillColor=#f0f9ff;fontColor=#1e40af;collapsible=0;shadow=1;" value="&lt;b style=&quot;font-size:14px;&quot;&gt;🏢 Ressources Logiques : Datacenters Privés (Tétouan &amp;amp; Tanger)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; font-weight:normal; color:#475569;&quot;&gt;Machines Virtuelles On-Premise permanentes (Hébergement haute sécurité)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="570" width="460" x="40" y="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="vm_db_m" parent="vms_privees_box" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#991b1b;&quot;&gt;VM_Database Master (Apogée)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#7f1d1d;&quot;&gt;16 vCPU • 32 GB RAM • IaaS Privé Tétouan&lt;br/&gt;Données sensibles &amp;amp; Gestion des scolarités&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="85" width="410" x="25" y="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="vm_db_s" parent="vms_privees_box" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#ccfbf1;strokeColor=#0d9488;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#0f766e;&quot;&gt;VM_Database Replica (Miroir Slave)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#134e4a;&quot;&gt;16 vCPU • 32 GB RAM • IaaS Privé Tanger&lt;br/&gt;Réplication continue &amp;amp; Tolérance aux pannes&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="85" width="410" x="25" y="165" as="geometry"/>
+                </mxCell>
+                <mxCell id="vm_ent" parent="vms_privees_box" style="shape=rect;rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#1e40af;&quot;&gt;VM_ENT Portal &amp;amp; Authentification CAS&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#1e3a8a;&quot;&gt;4 vCPU • 8 GB RAM • SaaS Privé (Portail Web étudiant)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="80" width="410" x="25" y="265" as="geometry"/>
+                </mxCell>
+                <mxCell id="vm_m_1" parent="vms_privees_box" style="shape=rect;rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#7c3aed;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#5b21b6;&quot;&gt;VM_Moodle Principale (LMS Socle)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#4c1d95;&quot;&gt;8 vCPU • 16 GB RAM • PaaS E-Learning Privé Tanger&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="80" width="410" x="25" y="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="vm_m_n" parent="vms_privees_box" style="shape=rect;rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#5b21b6;&quot;&gt;VM_Moodle N... (Pool Local Additionnel)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#4c1d95;&quot;&gt;8 vCPU • 16 GB RAM • Instances locales réparties sur Hosts privés&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="80" width="410" x="25" y="455" as="geometry"/>
+                </mxCell>
+                <mxCell id="scaling_engine_box" parent="1" style="shape=swimlane;startSize=45;rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=2;swimlaneFillColor=#fefce8;fontColor=#854d0e;collapsible=0;shadow=1;" value="&lt;b style=&quot;font-size:14px; color:#854d0e;&quot;&gt;⚙️ Moteur HorizontalVmScaling (CloudSim Plus)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; font-weight:normal; color:#713f12;&quot;&gt;Boucle d&#39;asservissement &amp;amp; Régulation dynamique de capacité&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="570" width="400" x="540" y="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="monitor_node" parent="scaling_engine_box" style="shape=rect;rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#ca8a04;strokeWidth=1.5;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#0f172a;&quot;&gt;1. Surveillance Continue (Monitor)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#475569;&quot;&gt;Télémétrie CPU, RAM &amp;amp; Longueur file d&#39;attente Cloudlets&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="75" width="330" x="35" y="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="threshold_node" parent="scaling_engine_box" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#fef08a;strokeColor=#ca8a04;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#854d0e;&quot;&gt;2. Évaluation des Seuils Critiques&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#a16207;&quot;&gt;Charge CPU &amp;gt; 80% (Surcharge) OU &amp;lt; 20% (Sous-charge)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="135" width="320" x="40" y="195" as="geometry"/>
+                </mxCell>
+                <mxCell id="provision_node" parent="scaling_engine_box" style="shape=hexagon;perimeter=hexagonPerimeter2;fixedSize=1;size=20;whiteSpace=wrap;html=1;fillColor=#fed7aa;strokeColor=#ea580c;strokeWidth=2;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:12px; color:#0f172a;&quot;&gt;3. Décision &amp;amp; Provisioning Dynamique&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#713f12;&quot;&gt;• &lt;b&gt;Scale-Out :&lt;/b&gt; Instanciation à chaud de VMs Moodle&lt;br/&gt;• &lt;b&gt;Scale-In :&lt;/b&gt; Destruction &amp;amp; libération de ressources&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="110" width="330" x="35" y="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_monitor_threshold" edge="1" parent="scaling_engine_box" source="monitor_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#ca8a04;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="threshold_node" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_threshold_scaleout" edge="1" parent="scaling_engine_box" source="threshold_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#dc2626;fontColor=#991b1b;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="provision_node" value="&lt;b style=&quot;color:#b91c1c;&quot;&gt;Oui : Scale-Out (CPU &amp;gt; 80%)&lt;/b&gt;">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_threshold_scalein" edge="1" parent="scaling_engine_box" source="threshold_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeWidth=1.5;strokeColor=#64748b;fontColor=#475569;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="provision_node" value="Non : Scale-In si sous-charge">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="380" y="262"/>
+                            <mxPoint x="380" y="475"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vms_publiques_cloud" parent="1" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#fffbeb;strokeColor=#ea580c;strokeWidth=3;dashed=1;shadow=1;" value="" vertex="1">
+                    <mxGeometry height="570" width="380" x="980" y="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="vms_publiques_title" parent="1" style="shape=rect;rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#ffedd5;strokeColor=#f97316;strokeWidth=1.5;align=center;verticalAlign=middle;" value="&lt;b style=&quot;font-size:14px; color:#c2410c;&quot;&gt;☁️ Ressources : Cloud Public (Bursting)&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#9a3412;&quot;&gt;Instances Éphémères Activées sur Pic de Charge&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="55" width="320" x="1010" y="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="vm_m_burst" parent="1" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#fed7aa;strokeColor=#ea580c;strokeWidth=2.5;align=center;verticalAlign=middle;shadow=1;" value="&lt;b style=&quot;font-size:13px; color:#9a3412;&quot;&gt;VM_Moodle_ScaleOut&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot;font-size:11px; color:#c2410c;&quot;&gt;• 8 vCPU • 16 GB RAM&lt;br/&gt;• Déployée sur Datacenter 3 (Public)&lt;br/&gt;• Facturation Pay-as-you-go&lt;br/&gt;• Traitement du surplus de 50k Cloudlets&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="210" width="300" x="1020" y="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="burst_tag" parent="1" style="shape=rect;rounded=1;arcSize=30;dashed=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#fdba74;align=center;verticalAlign=middle;" value="&lt;b style=&quot;color:#78350f;&quot;&gt;⚡ Élasticité Horizontale Automatique&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;font-size:10px; color:#92400e;&quot;&gt;Suppression immédiate après résorption du pic de trafic&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="50" width="290" x="1025" y="660" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_users_broker" edge="1" parent="1" source="users_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#0284c7;fontColor=#0369a1;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="broker_node" value="&lt;b&gt;Envoi des requêtes applicatives&lt;/b&gt;">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_broker_vms_normal" edge="1" parent="1" source="broker_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#1e40af;fontColor=#1e40af;fontStyle=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="vms_privees_box" value="&lt;b&gt;Routage Normal (Ressources On-Premise)&lt;/b&gt;">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="640" y="210"/>
+                            <mxPoint x="270" y="210"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_broker_monitor" edge="1" parent="1" source="broker_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=6 4;strokeWidth=2;strokeColor=#ca8a04;fontColor=#854d0e;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="scaling_engine_box" value="Sonde métriques &amp;amp; charge VMs">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_provision_burst" edge="1" parent="1" source="provision_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#ea580c;fontColor=#c2410c;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="vm_m_burst" value="&lt;b&gt;Alloue ressources via VmAllocationPolicy&lt;/b&gt;">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_broker_burst" edge="1" parent="1" source="broker_node" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 6;strokeWidth=3;strokeColor=#ea580c;fontColor=#c2410c;fontStyle=1;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="vms_publiques_cloud" value="&lt;b&gt;Routage Débordement (Cloud Bursting en Pic)&lt;/b&gt;">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="880" y="200"/>
+                            <mxPoint x="1170" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend_box" parent="1" style="shape=rect;rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#94a3b8;strokeWidth=1.5;fontColor=#334155;align=left;spacing=12;shadow=1;" value="&lt;table style=&quot;width:100%; border-collapse:collapse; font-size:11px;&quot;&gt;&lt;tr&gt;&lt;td style=&quot;width:30%; vertical-align:middle;&quot;&gt;&lt;b style=&quot;color:#0f172a;&quot;&gt;📌 Types de Machines Virtuelles :&lt;/b&gt;&lt;br/&gt;&lt;span style=&quot;color:#dc2626;&quot;&gt;●&lt;/span&gt; VM_Database Master / Replica (16 vCPU, 32 Go)&lt;br/&gt;&lt;span style=&quot;color:#2563eb;&quot;&gt;●&lt;/span&gt; VM_ENT Portal (4 vCPU, 8 Go RAM)&lt;br/&gt;&lt;span style=&quot;color:#7c3aed;&quot;&gt;●&lt;/span&gt; VM_Moodle Base &amp;amp; Scale-Out (8 vCPU, 16 Go)&lt;/td&gt;&lt;td style=&quot;width:35%; vertical-align:middle; border-left:1px solid #cbd5e1; padding-left:15px;&quot;&gt;&lt;b style=&quot;color:#0f172a;&quot;&gt;⚖️ Algorithmes &amp;amp; Politiques CloudSim Plus :&lt;/b&gt;&lt;br/&gt;• Ordonnancement Cloudlets : &lt;code&gt;CloudletSchedulerSpaceShared&lt;/code&gt;&lt;br/&gt;• Placement des VMs : &lt;code&gt;VmAllocationPolicyBestFit&lt;/code&gt;&lt;br/&gt;• Seuil d&#39;élasticité : CPU &amp;gt; 80% &amp;rarr; Déclenchement Bursting&lt;/td&gt;&lt;td style=&quot;width:35%; vertical-align:middle; border-left:1px solid #cbd5e1; padding-left:15px;&quot;&gt;&lt;b style=&quot;color:#0f172a;&quot;&gt;🎯 Objectif Opérationnel UAE :&lt;/b&gt;&lt;br/&gt;• RPO &amp;lt; 1s &amp;amp; RTO quasi-nul pour la scolarité Apogée&lt;br/&gt;• 100% de disponibilité Moodle durant les semaines d&#39;examens&lt;br/&gt;• Zéro dégradation du temps de réponse moyen (&amp;lt; 1.5s)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+                    <mxGeometry height="90" width="1320" x="40" y="835" as="geometry"/>
+                </mxCell>
+                <mxCell id="dc_priv_badge" parent="1" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#3b82f6;strokeWidth=1.5;align=center;verticalAlign=middle;" value="&lt;b style=&quot;font-size:10px; color:#1e40af;&quot;&gt;Cloud Privé&lt;/b&gt;" vertex="1">
+                    <mxGeometry height="30" width="105" x="395" y="220" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
