@@ -1,0 +1,63 @@
+# ==============================================================================
+# .gitignore — Projet Cloud Intelligence (CloudSim Plus, OpenStack, IaC, SLA)
+# ==============================================================================
+
+# 1. Java & Maven (Partie 1 - CloudSim Plus)
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# 2. Terraform & Ansible (Partie 3 - Infrastructure as Code)
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.retry
+
+# 3. Python (Partie 4 - SLA Monitoring)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# 4. Sécurité & Clés Privées (Zero Secrets in Git)
+*.pem
+*.key
+clouds.yaml
+
+# 5. IDEs, Guides Internes & Système d'Exploitation
+instructions/
+**/AGENTS.md
+**/.github/
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# 6. Exceptions explicites pour les livrables obligatoires du cahier des charges
+!partie04/measurements.log
+!partie03/terraform/terraform_apply_output.txt
+!partie03/ansible/inventory.ini
