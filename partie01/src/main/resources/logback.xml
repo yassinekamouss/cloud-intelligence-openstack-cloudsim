@@ -1,0 +1,15 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Éviter de saturer la console avec des dizaines de milliers de lignes de logs CloudSim -->
+    <logger name="org.cloudsimplus" level="WARN" />
+    <logger name="org.cloudsimplus.autoscaling" level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
